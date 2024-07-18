@@ -4,7 +4,7 @@ import re
 from io import BytesIO
 
 def clean_kolompok(kelompok):
-    return re.sub(r'\D', '', str(kelompok))
+    return re.sub(r'\D', '', str(kelompok)).rstrip('0')
 
 def convert_df_to_excel(df):
     output = BytesIO()
