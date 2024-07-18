@@ -16,7 +16,7 @@ def convert_df_to_excel(df):
 
 def main():
     st.title("Filter kelompok lebih dari 8")
-    uploaded_file = st.file_uploader("Upload File Excelnya Disini. Sumber data dari Detail Nasabah SRSS. Ganti nama jadi Detail Nasabah.xlsx", type=["xlsx"])
+    uploaded_file = st.file_uploader("Upload File Excelnya Disini", type=["xlsx"])
     if uploaded_file is not None:
         df1 = pd.read_excel(uploaded_file, skiprows=2)
 
@@ -47,7 +47,7 @@ def main():
         else:
             st.error("Kolom 'Kelompok' tidak ditemukan dalam dataframe.")
     else:
-        st.info("Please upload an Excel file to proceed, jika hasilnya blank berarti tidak ada anggota lebih dari 8 per kelompoknya.")
+        st.info("1.Sumber data dari Detail Nasabah SRSS 2. Ganti nama jadi Detail Nasabah.xlsx 3. Jika hasilnya blank berarti tidak ada anggota lebih dari 8 per kelompoknya.")
 
 if __name__ == "__main__":
     main()
