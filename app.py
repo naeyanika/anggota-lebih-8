@@ -1,14 +1,22 @@
 import streamlit as st
 import pandas as pd
 import re
-
+from io import BytesIO
 
 def clean_kolompok(kelompok):
     return re.sub(r'\D', '', str(kelompok))
 
+def convert_df_to_excel(df):
+    output = BytesIO()
+    writer = pd.ExcelWriter(output, engine='openpyxl')
+    df.to_excel(writer, index=False, sheet_name='Sheet1')
+    writer.save()
+    processed_data = output.getvalue()
+    return processed_data
 
 def main():
-    st.title('Filter Anggota Lebih dari 8')        
+    st.title("Kelompok Analysis")
+
     uploaded_file = st.file_uploader("Upload Excel file", type=["xlsx"])
     
     if uploaded_file is not None:
@@ -25,12 +33,13 @@ def main():
             st.write("Filtered Results:")
             st.dataframe(result)
 
-            @st.cache_data
-            def convert_df_to_excel(df):
-                return df.to_excel(index=False, engine='openpyxl')
-
             excel_data = convert_df_to_excel(result)
 
+            st.title('Data Pengolahan THC Simpanan')
+            st.markdown("""
+                ## Catatan:
+                Format nama pada file ini harus "Detail Nasabah.xlsx"
+            """)
 
             st.download_button(
                 label="Download File tersebut disini",
@@ -41,7 +50,7 @@ def main():
         else:
             st.error("Kolom 'Kelompok' tidak ditemukan dalam dataframe.")
     else:
-        st.info("Sumber File : Detail Nasabah SRSS.xlsx dan direname jadi Detail Nasabah.xlsx")
+        st.info("Please upload an Excel file to proceed.")
 
 if __name__ == "__main__":
     main()
