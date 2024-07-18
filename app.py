@@ -35,9 +35,9 @@ def main():
             excel_data = convert_df_to_excel(result)
             
             st.markdown("""
-                #Catatan:
-                Ambil data dari modul Detail Nasabah SRSS
-                Format nama pada file ini harus "Detail Nasabah.xlsx"
+                ## Catatan:
+                1. Ambil data dari modul Detail Nasabah SRSS
+                2. Format nama pada file ini harus "Detail Nasabah.xlsx"
             """)
             st.download_button(
                 label="Download File tersebut disini",
