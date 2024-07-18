@@ -16,7 +16,7 @@ def convert_df_to_excel(df):
 
 def main():
     st.title("Filter kelompok lebih dari 8")
-    uploaded_file = st.file_uploader("Upload Excel file", type=["xlsx"])
+    uploaded_file = st.file_uploader("Upload File Excel Disini, Source data dari Detail Nasabah SRSS. Ganti nama jadi Detail Nasabah.xlsx", type=["xlsx"])
     
     if uploaded_file is not None:
         df1 = pd.read_excel(uploaded_file, skiprows=2)
