@@ -15,8 +15,12 @@ def convert_df_to_excel(df):
     return processed_data
 
 def main():
-    st.title("Kelompok Analysis")
-
+    st.title("Filter kelompok lebih dari 8")
+            st.markdown("""
+                ## Catatan:
+                Ambil data dari modul Detail Nasabah SRSS
+                Format nama pada file ini harus "Detail Nasabah.xlsx"
+            """)
     uploaded_file = st.file_uploader("Upload Excel file", type=["xlsx"])
     
     if uploaded_file is not None:
@@ -34,12 +38,6 @@ def main():
             st.dataframe(result)
 
             excel_data = convert_df_to_excel(result)
-
-            st.title('Data Pengolahan THC Simpanan')
-            st.markdown("""
-                ## Catatan:
-                Format nama pada file ini harus "Detail Nasabah.xlsx"
-            """)
 
             st.download_button(
                 label="Download File tersebut disini",
