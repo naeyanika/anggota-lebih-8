@@ -10,15 +10,12 @@ def clean_kolompok(kelompok):
 def main():
     st.title("Kelompok Analysis")
 
-
     uploaded_file = st.file_uploader("Upload Excel file", type=["xlsx"])
     
     if uploaded_file is not None:
-
         df1 = pd.read_excel(uploaded_file, skiprows=2)
 
         if 'Kelompok' in df1.columns:
-
             df1['Kelompok'] = df1['Kelompok'].apply(clean_kolompok)
 
             grouped = df1.groupby(['Center', 'Kelompok']).size().reset_index(name='JumlahAnggota')
@@ -35,11 +32,12 @@ def main():
 
             excel_data = convert_df_to_excel(result)
 
-            st.title('Data Pengolahan THC Simpanan')
-st.markdown("""
-            ## Catatan:
-            Format nama pada file ini harus "Detail Nasabah.xlsx"
-""")
+            st.title('Filter Anggota Lebih dari 8')
+            st.markdown("""
+                ## Catatan:
+                Menggunakan file tarikan data Detail Nasabah SRSS.xlsx
+                Format nama pada file ini harus "Detail Nasabah.xlsx"
+            """)
 
             st.download_button(
                 label="Download File tersebut disini",
