@@ -8,8 +8,6 @@ def clean_kolompok(kelompok):
 
 
 def main():
-    st.title("Kelompok Analysis")
-
     uploaded_file = st.file_uploader("Upload Excel file", type=["xlsx"])
     
     if uploaded_file is not None:
