@@ -47,7 +47,7 @@ def main():
         else:
             st.error("Kolom 'Kelompok' tidak ditemukan dalam dataframe.")
     else:
-        st.info("Please upload an Excel file to proceed.")
+        st.info("Please upload an Excel file to proceed, jika hasilnya blank berarti tidak ada anggota lebih dari 8 per kelompoknya.")
 
 if __name__ == "__main__":
     main()
