@@ -8,6 +8,7 @@ def clean_kolompok(kelompok):
 
 
 def main():
+    st.title('Filter Anggota Lebih dari 8')        
     uploaded_file = st.file_uploader("Upload Excel file", type=["xlsx"])
     
     if uploaded_file is not None:
@@ -30,12 +31,6 @@ def main():
 
             excel_data = convert_df_to_excel(result)
 
-            st.title('Filter Anggota Lebih dari 8')
-            st.markdown("""
-                ## Catatan:
-                Menggunakan file tarikan data Detail Nasabah SRSS.xlsx
-                Format nama pada file ini harus "Detail Nasabah.xlsx"
-            """)
 
             st.download_button(
                 label="Download File tersebut disini",
@@ -46,7 +41,7 @@ def main():
         else:
             st.error("Kolom 'Kelompok' tidak ditemukan dalam dataframe.")
     else:
-        st.info("Please upload an Excel file to proceed.")
+        st.info("Sumber File : Detail Nasabah SRSS.xlsx dan direname jadi Detail Nasabah.xlsx")
 
 if __name__ == "__main__":
     main()
